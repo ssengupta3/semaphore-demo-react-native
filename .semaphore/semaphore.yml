@@ -47,8 +47,6 @@ blocks:
           os_image: macos-mojave-xcode11
       prologue:
         commands:
-          # set open files limit (for node EMFILE: too many open files error)
-          - ulimit -n 1024
           # Download source code from GitHub:
           - checkout
       jobs:
@@ -58,7 +56,8 @@ blocks:
             - npm test
         - name: e2e tests
           commands:
-            - ulimit -n
+            # set open files limit (for node EMFILE: too many open files error)
+            - ulimit -n 10240
             # Install dependencies for detox.js
             - brew tap wix/brew
             - brew install applesimutils
