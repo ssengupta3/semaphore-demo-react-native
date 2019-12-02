@@ -48,7 +48,7 @@ blocks:
       prologue:
         commands:
           # set open files limit (for node EMFILE: too many open files error)
-          - ulimit -n 100000
+          - ulimit -n 1024
           # Download source code from GitHub:
           - checkout
       jobs:
