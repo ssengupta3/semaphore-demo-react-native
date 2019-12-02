@@ -48,8 +48,7 @@ blocks:
       prologue:
         commands:
           # set open files limit (for node EMFILE: too many open files error)
-          - ulimit -n
-          - ulimit -n 10000
+          - ulimit -n 100000
           # Download source code from GitHub:
           - checkout
       jobs:
@@ -59,6 +58,7 @@ blocks:
             - npm test
         - name: e2e tests
           commands:
+            - ulimit -n
             # Install dependencies for detox.js
             - brew tap wix/brew
             - brew install applesimutils
