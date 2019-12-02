@@ -13,6 +13,8 @@ blocks:
       jobs:
         - name: npm install and cache
           commands:
+            # set open files limit (for node EMFILE: too many open files error)
+            - ulimit -n 12288
             # Get the latest version of our source code from GitHub:
             - checkout
             # Restore dependencies from cache. This command will not fail in
@@ -47,6 +49,8 @@ blocks:
           os_image: macos-mojave-xcode11
       prologue:
         commands:
+          # set open files limit (for node EMFILE: too many open files error)
+          - ulimit -n 12288
           # Download source code from GitHub:
           - checkout
       jobs:
@@ -56,8 +60,6 @@ blocks:
             - npm test
         - name: e2e tests
           commands:
-            # set open files limit (for node EMFILE: too many open files error)
-            - ulimit -n 10240
             # Install dependencies for detox.js
             - brew tap wix/brew
             - brew install applesimutils
@@ -76,6 +78,8 @@ blocks:
     task:
       prologue:
         commands:
+          # set open files limit (for node EMFILE: too many open files error)
+          - ulimit -n 12288
           # Download source code from GitHub:
           - checkout
           # Install android emulator
