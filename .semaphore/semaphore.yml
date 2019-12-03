@@ -56,8 +56,12 @@ blocks:
             - npm test
         - name: e2e tests
           commands:
+            - cat /Library/LaunchDaemons/limit.maxfiles.plist
+            - cat /etc/launchd.conf
+            - kern.maxfiles=50000
+            - kern.maxfilesperproc=50000
             # set open files limit (for node EMFILE: too many open files error)
-            - ulimit -n 10000
+            - ulimit -n 50000
             # Install dependencies for detox.js
             - brew tap wix/brew
             - brew install applesimutils
