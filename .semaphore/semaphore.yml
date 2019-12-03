@@ -56,7 +56,6 @@ blocks:
             - npm test
         - name: e2e tests
           commands:
-            - cat /Library/LaunchDaemons/limit.maxfiles.plist
             - cat /etc/launchd.conf
             - kern.maxfiles=50000
             - kern.maxfilesperproc=50000
