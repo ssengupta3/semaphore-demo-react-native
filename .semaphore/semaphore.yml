@@ -48,7 +48,6 @@ blocks:
       prologue:
         commands:
           # Download source code from GitHub:
-          - sudo launchctl limit maxfiles 2048 unlimited
           - checkout
       jobs:
         - name: unit and integration tests
@@ -60,6 +59,7 @@ blocks:
             # Install dependencies for detox.js
             - brew tap wix/brew
             - brew install applesimutils
+            - brew install watchman
             - cache restore
             - cd ios
             - pod install
